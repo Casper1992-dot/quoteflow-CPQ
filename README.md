@@ -1,94 +1,86 @@
-# QuoteFlow: CPQ-to-contract prototype for e-commerce fulfillment
+# QuoteFlow · CPQ-to-Contract Prototype
 
-QuoteFlow is a working product prototype that shows how a Salesforce CPQ style flow could quote, approve, contract and hand off warehousing and fulfillment deals to enterprise brands and sellers.
+**A working product prototype of a Configure-Price-Quote (CPQ) to contract flow for e-commerce fulfillment services, designed and built by [Rajdip Sengupta](https://www.linkedin.com/in/rajdip-sengupta-a1664182), Senior Product Manager.**
 
-> Prototype only. Every product, price, client, exchange rate and tax rate is fictional. Integrations to WMS, billing and SAP are simulated. Not affiliated with or endorsed by Salesforce.
+🔗 **Live demo:** `https://<your-github-username>.github.io/quoteflow-cpq/` · ⏱ 5-minute walkthrough below
 
-**Live demo:** `https://<your-github-username>.github.io/quoteflow-cpq/`
+> Personal prototype. All products, prices, clients, exchange rates and tax rates are fictional, and the WMS, billing and SAP integrations are simulated. Not affiliated with Salesforce.
 
-## What it does
+---
 
-| Area | What you can try |
+## The problem
+
+When an e-commerce company sells warehousing and fulfillment services to enterprise brands, every deal mixes usage-based fees, fixed fees, volume discounts, SLA tiers and contract terms. In most teams:
+
+- **Pricing lives in spreadsheets,** so the same service is priced differently from deal to deal.
+- **Discount approvals happen over email,** with no audit trail: a SOX and financial-controls risk.
+- **Legal re-types terms into contracts,** creating mismatches between quote, contract and invoice.
+- **Operations re-enters rates by hand** after signature, delaying client go-live.
+
+QuoteFlow shows how a Salesforce CPQ style flow can take a deal from quote to approved contract to live billing, with controls built in.
+
+## What I built
+
+| Capability | How it works |
 |---|---|
-| Catalog and pricing | Usage-based services (per order, per pallet-day, per inbound unit), fixed fees, bundles, SLA tiers, volume tiers and a commitment bonus |
-| Product rules | Fresh SKUs require chilled storage; dark-store fulfillment requires inbound handling |
-| Multi-currency and tax | USD, INR and IDR price conversion, demo tax per billing entity, exchange rate locked at approval |
-| AI-suggested discount | A simulated model on demo history suggests a discount band by win rate and margin; it never approves anything |
-| Approvals and controls | Deal desk above 10%, Finance above 20% or below a 25% margin floor, Legal for non-standard clauses; separation of duties; edits after approval force re-approval; full audit trail |
-| Contracts and Legal | Contract generated from approved terms; clause library; flagged clauses must be accepted or reverted by Legal |
-| Handoff and revenue | Closed Won sends WMS setup (synchronous), billing rates (asynchronous) and an ASC 606 / IFRS 15 revenue schedule to a mock SAP endpoint |
-| Usage reconciliation | Billed volumes compared with simulated WMS actuals; variances above 3% become Finance exceptions |
-| Quote analytics | Win rate, discount leakage, approval cycle time and margin by service, with drill-down to quotes |
+| **Configurable pricing** | Usage-based services (per order, per pallet-day, per inbound unit), fixed fees, bundles, SLA tiers, volume tiers and a commitment bonus, with live margin against a 25% floor |
+| **Product rules** | Invalid configurations are blocked, e.g. fresh SKUs without chilled storage |
+| **Multi-currency and tax** | USD, INR and IDR quotes with country tax; exchange rates locked at approval |
+| **AI-suggested discount** | Suggests a discount band from historical win rates and margin; it never approves on its own |
+| **Approval chain with SOX controls** | Deal desk, Finance and Legal steps by policy; no self-approval; any edit after approval forces re-approval; full audit trail |
+| **Contract and clause review** | Contract generated from approved terms; non-standard clauses flagged against a clause library and decided by Legal |
+| **Downstream handoff** | Closed Won sends WMS setup (synchronous), billing rates (asynchronous) and an ASC 606 / IFRS 15 revenue schedule to SAP (mock) |
+| **Usage reconciliation** | Billed vs actual warehouse volumes; variances above 3% hold the invoice for Finance |
+| **Quote analytics** | Win rate, discount leakage, approval cycle time and margin by service, with drill-down to quotes |
 
-## Try this demo path (5 minutes)
+## Product decisions I made
 
-1. As **Ana Putri (Sales rep)**, click **New quote**. Tick *fresh or chilled SKUs* and see the product rule block the quote until you add Chilled storage.
-2. Set a 22% discount and a 45-day termination notice. The approval chain now shows Deal desk, Finance and Legal.
-3. Submit, then switch to **Dev Menon (Deal desk)**, **Fatima Noor (Finance)** and **Leo Hartono (Legal)** to approve. Legal must decide on each flagged clause first.
-4. Back as Ana: generate the contract, mark it **Closed Won**, and open **Handoff & revenue** to see the WMS payload, the async billing job and the revenue schedule.
+1. **AI suggests, people decide.** The discount model recommends a band, but any discount above threshold still goes through human approval, so automation never weakens financial controls.
+2. **Controls by design, not by process.** Separation of duties, locked approved quotes and an audit trail on every step mean the evidence an auditor needs is created as the work happens.
+3. **One source of truth from quote to cash.** Contract terms, WMS rates, billing and revenue schedules all come from the same approved quote, removing re-typing and mismatches.
+4. **Synchronous where it must be, asynchronous where it can be.** WMS client setup confirms immediately; bulk billing rate sync runs in the background, trading speed for scale and cost.
+5. **Measure the commercial engine.** Discount leakage and approval cycle time show where pricing policy or approval thresholds need tuning.
+
+## Try it in 5 minutes
+
+1. As **Ana Putri (Sales rep)**, click **New quote** and tick *fresh or chilled SKUs*. The product rule blocks the quote until you add Chilled storage.
+2. Set a **22% discount** and a **45-day termination notice**. The approval chain now needs Deal desk, Finance and Legal.
+3. **Submit**, then switch user (top right) to **Dev** (Deal desk), **Fatima** (Finance) and **Leo** (Legal) to approve. Legal must decide on each flagged clause first.
+4. Back as Ana, **generate the contract**, mark it **Closed Won**, and open **Handoff & revenue** to see the WMS payload, the billing job and the revenue schedule.
 5. As Fatima, open **Usage reconciliation** and approve an invoice adjustment.
-6. Open **Analytics** and click a tile to see the quotes behind it.
+6. Open **Analytics** and click any tile to see the quotes behind it.
 
-Use **Reset demo** at the top right to start again. Data is kept only in your browser.
+**Reset demo** (top right) starts over. Your changes stay only in your browser.
 
-## Tech
+## Skills this project demonstrates
 
-Static HTML, CSS and vanilla JavaScript. No build step, no backend, no external services except Google Fonts.
+**Product management:** problem framing, PRD writing, prioritization, scope control, success metrics
+**Quote-to-cash domain:** CPQ, pricing and discount policy, approval workflows, contract lifecycle, revenue recognition (ASC 606 / IFRS 15), billing reconciliation
+**Financial controls:** SOX-style separation of duties, audit trails, approval evidence
+**Platform and integration design:** API handoffs, synchronous vs asynchronous trade-offs, multi-currency and tax
+**Responsible AI:** human-in-the-loop decisions, transparent suggestions
+**AI-native building:** prototyped end to end with Claude Code
+
+## Built with
+
+Plain HTML, CSS and JavaScript, with no backend and no build step, hosted free on GitHub Pages.
 
 | File | Purpose |
 |---|---|
 | `index.html` | Page shell |
-| `styles.css` | Styles, light and dark themes |
-| `data.js` | Fictional catalog, policies, clause library and seeded history |
-| `engine.js` | Pricing, rules, approvals, discount model, revenue schedule, reconciliation and analytics (pure functions) |
-| `app.js` | UI and workflow state |
+| `styles.css` | Styles with light and dark themes |
+| `data.js` | Fictional catalog, policies, clause library and demo history |
+| `engine.js` | Pricing, rules, approvals, discount model, revenue schedule, reconciliation and analytics |
+| `app.js` | User interface and workflow |
 
-## Product documentation
+Hosting steps are in [HOSTING.md](HOSTING.md).
 
-The one-page PRD behind this prototype: *PRD: Salesforce CPQ for E-commerce Fulfillment Services* (link it here once you share it).
+## About me
 
----
+I'm a Senior Product Manager with 10+ years across product management, technology consulting and software engineering. I build enterprise platforms, data infrastructure and AI agents for supply chain and e-commerce, and I've led SOX compliance programs across Flipkart, Walmart and EY.
 
-## Hosting plan: GitHub Pages (free)
-
-### 1. Create the repository
-1. Sign in to GitHub with a **personal account** (not a work account).
-2. Click **New repository**, name it `quoteflow-cpq`, set it to **Public**, tick **Add a README** off (this folder already has one), and create it.
-
-### 2. Upload the files
-**Option A, browser (no tools needed):** on the repository page click **Add file → Upload files**, drag in every file from this folder (`index.html`, `styles.css`, `data.js`, `engine.js`, `app.js`, `README.md`, `.nojekyll`, `LICENSE`), then **Commit changes**.
-
-**Option B, command line:**
-```bash
-cd quoteflow-cpq
-git init
-git add .
-git commit -m "QuoteFlow CPQ prototype"
-git branch -M main
-git remote add origin https://github.com/<your-github-username>/quoteflow-cpq.git
-git push -u origin main
-```
-
-### 3. Turn on GitHub Pages
-1. Go to **Settings → Pages**.
-2. Under **Build and deployment**, set **Source** to **Deploy from a branch**, choose **main** and **/(root)**, then **Save**.
-3. Wait 1 to 3 minutes. The site is live at `https://<your-github-username>.github.io/quoteflow-cpq/`.
-
-### 4. Check it
-- Open the link on a laptop and a phone.
-- Run the demo path above end to end.
-- Click **Reset demo** and confirm the seeded quotes come back.
-
-### 5. Make it recruiter-ready
-1. Replace `<your-github-username>` in this README with your username.
-2. Add 2 or 3 screenshots (quote builder, approvals, analytics) to a `docs/` folder and show them in this README.
-3. Pin the repository on your GitHub profile.
-4. Add the live link to your resume project line, your portfolio, and LinkedIn **Featured**.
-5. Optional: record a 60-second screen walkthrough and link it here.
-
-### 6. Updating later
-Edit a file on GitHub (pencil icon) or push a new commit; Pages redeploys in about a minute.
+**Let's talk:** [LinkedIn](https://www.linkedin.com/in/rajdip-sengupta-a1664182) · rajdip.sengupta17@iimranchi.ac.in
 
 ## License
 
-MIT. See `LICENSE`.
+MIT. See [LICENSE](LICENSE).
