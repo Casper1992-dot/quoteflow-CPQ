@@ -2,7 +2,22 @@
 
 **A working product prototype of a Configure-Price-Quote (CPQ) to contract flow for e-commerce fulfillment services, designed and built by [Rajdip Sengupta](https://www.linkedin.com/in/rajdip-sengupta-a1664182), Senior Product Manager.**
 
-🔗 **Live demo:** `https://<your-github-username>.github.io/quoteflow-cpq/` · ⏱ 5-minute walkthrough below
+🔗 **Live demo:** `(https://casper1992-dot.github.io/quoteflow-CPQ/)` · ⏱ 5-minute walkthrough below
+
+<img width="1309" height="445" alt="image" src="https://github.com/user-attachments/assets/d1f3ae74-28cd-483e-aa62-076df3597c6e" />
+<img width="1314" height="787" alt="image" src="https://github.com/user-attachments/assets/26c671bf-be10-4179-a902-216b531875db" />
+<img width="1330" height="554" alt="image" src="https://github.com/user-attachments/assets/50d5e618-a201-421d-8b2f-d7add8807974" />
+<img width="1316" height="785" alt="image" src="https://github.com/user-attachments/assets/8490986e-c0a9-467b-a1c7-b3ecd4be7684" />
+<img width="1292" height="690" alt="image" src="https://github.com/user-attachments/assets/25fe5a2a-5fc6-4ceb-a825-3e6170776a0f" />
+<img width="1317" height="699" alt="image" src="https://github.com/user-attachments/assets/d5f19b25-eaa6-4ca5-a4de-6154db66b9b8" />
+<img width="1284" height="798" alt="image" src="https://github.com/user-attachments/assets/5130f7e1-1df6-465a-8003-13c76471a48f" />
+
+
+
+
+
+
+
 
 > Personal prototype. All products, prices, clients, exchange rates and tax rates are fictional, and the WMS, billing and SAP integrations are simulated. Not affiliated with Salesforce.
 
