@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuoteFlow CPQ Prototype</title>
+<meta name="description" content="QuoteFlow: a CPQ-to-contract prototype for e-commerce fulfillment services. Configurable pricing, approvals with audit trails, contracts with clause review, revenue recognition handoff, usage reconciliation and quote analytics. Fictional data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo" aria-hidden="true">Q</span><div><b>QuoteFlow</b><span>CPQ-to-contract prototype · e-commerce fulfillment</span></div></div>
+  <div class="who"><label for="user">Signed in as</label><select id="user"></select><button class="btn ghost small" id="reset" type="button">Reset demo</button></div>
+</header>
+<p class="banner">Prototype with fictional products, prices, clients, exchange and tax rates. Integrations to WMS, billing and SAP are simulated. Not affiliated with Salesforce; built to show how a Salesforce CPQ style flow would work.</p>
+<nav id="tabs" class="tabs" aria-label="Sections"></nav>
+<main id="main"></main>
+<div id="toast" class="toast" role="status" hidden></div>
+<footer class="foot">Built by Rajdip Sengupta as a product prototype · <a href="https://www.linkedin.com/in/rajdip-sengupta-a1664182" target="_blank" rel="noopener">LinkedIn</a></footer>
+<script src="data.js"></script>
+<script src="engine.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
