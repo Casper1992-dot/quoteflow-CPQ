@@ -2,7 +2,7 @@
 
 **A working product prototype of a Configure-Price-Quote (CPQ) to contract flow for e-commerce fulfillment services, designed and built by [Rajdip Sengupta](https://www.linkedin.com/in/rajdip-sengupta-a1664182), Senior Product Manager.**
 
-🔗 **Live demo:** `(https://casper1992-dot.github.io/quoteflow-CPQ/)` · ⏱ 5-minute walkthrough below
+🔗 **Live demo:** [casper1992-dot.github.io/quoteflow-CPQ](https://casper1992-dot.github.io/quoteflow-CPQ/) · ⏱ 5-minute walkthrough below
 
 <img width="1309" height="445" alt="image" src="https://github.com/user-attachments/assets/d1f3ae74-28cd-483e-aa62-076df3597c6e" />
 <img width="1314" height="787" alt="image" src="https://github.com/user-attachments/assets/26c671bf-be10-4179-a902-216b531875db" />
@@ -61,7 +61,7 @@ QuoteFlow shows how a Salesforce CPQ style flow can take a deal from quote to ap
 1. As **Ana Putri (Sales rep)**, click **New quote** and tick *fresh or chilled SKUs*. The product rule blocks the quote until you add Chilled storage.
 2. Set a **22% discount** and a **45-day termination notice**. The approval chain now needs Deal desk, Finance and Legal.
 3. **Submit**, then switch user (top right) to **Dev** (Deal desk), **Fatima** (Finance) and **Leo** (Legal) to approve. Legal must decide on each flagged clause first.
-4. Back as Ana, **generate the contract**, mark it **Closed Won**, and open **Handoff & revenue** to see the WMS payload, the billing job and the revenue schedule.
+4. Back as Ana, **generate the contract**, mark it **Closed Won**, and open **Handoff & revenue** to see the WMS payload, the billing job, and the revenue schedule.
 5. As Fatima, open **Usage reconciliation** and approve an invoice adjustment.
 6. Open **Analytics** and click any tile to see the quotes behind it.
 
@@ -69,13 +69,12 @@ QuoteFlow shows how a Salesforce CPQ style flow can take a deal from quote to ap
 
 ## Skills this project demonstrates
 
-**Product management:** problem framing, PRD writing, prioritization, scope control, success metrics
-**Quote-to-cash domain:** CPQ, pricing and discount policy, approval workflows, contract lifecycle, revenue recognition (ASC 606 / IFRS 15), billing reconciliation
-**Financial controls:** SOX-style separation of duties, audit trails, approval evidence
-**Platform and integration design:** API handoffs, synchronous vs asynchronous trade-offs, multi-currency and tax
-**Responsible AI:** human-in-the-loop decisions, transparent suggestions
-**AI-native building:** prototyped end to end with Claude Code
-
+   - **Product management:** problem framing, PRD writing, prioritization, scope control, success metrics
+   - **Quote-to-cash domain:** CPQ, pricing and discount policy, approval workflows, contract lifecycle, revenue recognition (ASC 606 / IFRS 15), billing reconciliation
+   - **Financial controls:** SOX-style separation of duties, audit trails, approval evidence
+   - **Platform and integration design:** API handoffs, synchronous vs asynchronous trade-offs, multi-currency and tax
+   - **Responsible AI:** human-in-the-loop decisions, transparent suggestions
+   - **AI-native building:** prototyped end to end with Claude Code
 ## Built with
 
 Plain HTML, CSS and JavaScript, with no backend and no build step, hosted free on GitHub Pages.
